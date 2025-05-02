@@ -1,3 +1,4 @@
+
 #Estadísticas 
 summary(EstudioDatosMentales$Age) # Media, mediana, mínimo, máximo, etc.
 
