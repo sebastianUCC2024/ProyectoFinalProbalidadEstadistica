@@ -27,6 +27,6 @@ pie(table(datos$Do.you.have.Anxiety.),
                    "\n",
                    table(datos$Do.you.have.Anxiety.),
                    "estudiantes"),
-    border = "white")
+    border = "black")
 
 
