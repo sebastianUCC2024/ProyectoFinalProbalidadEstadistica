@@ -2,7 +2,7 @@
 datos <- read.csv("EstudioDatosMentales.csv",header=TRUE, sep=",")
 # Media, mediana, mínimo, máximo, etc.
 summary(datos$Do.you.have.Anxiety.) 
-# Rango
+# Rang
 range(datos$Do.you.have.Anxiety., na.rm = TRUE) 
 
 #Tabla de frecuencias 

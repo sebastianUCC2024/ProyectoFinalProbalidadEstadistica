@@ -18,4 +18,7 @@ barplot(
   border = "black"
 )
 
+qqnorm(EstudioDatosMentales$Age, main = "grafico edad", xlab = "x", ylab = "y")
+qqline(EstudioDatosMentales$Age, col = "red", lwd = 2)
+
      

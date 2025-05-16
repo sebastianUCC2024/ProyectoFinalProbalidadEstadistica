@@ -26,3 +26,6 @@ boxplot(datos$Age,
         ylab = "Edad",
         col = "salmon")
 
+#grafico Q-Q
+qqnorm(EstudioDatosMentales$Age, main = "grafico edad", xlab = "x", ylab = "y")
+qqline(EstudioDatosMentales$Age, col = "red", lwd = 2)

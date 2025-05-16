@@ -24,3 +24,4 @@ pie(table(datos$Do.you.have.Depression.),
                    table(datos$Do.you.have.Depression.),
                    "estudiantes"),
     border = "black")
+
