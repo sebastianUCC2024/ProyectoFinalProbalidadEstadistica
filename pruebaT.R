@@ -38,17 +38,29 @@ datos <- read.csv("EstudioDatosMentales.csv")
 names(datos) <- make.names(names(datos))
 
 # Modelo de regresión lineal: CGPA según Edad
-modelo <- lm(CGPA_num ~ Age, data = datos)
+modelo <- lm(CGPA_num ~ Depresion, data = datos)
 print(modelo)
 
 # Resumen del modelo
 summary(modelo)
 
 # Visualización del modelo
-ggplot(datos, aes(x = Age, y = CGPA_num)) +
+ggplot(datos, aes(x = Depresion, y = CGPA_num)) +
   geom_point(color = "darkred") +
   geom_smooth(method = "lm", color = "blue", se = TRUE) +
-  labs(title = "Relación entre Edad y Promedio Académico",
-       x = "Edad",
+  labs(title = "Relación entre Edad y depresion",
+       x = "depresion",
        y = "Promedio Académico (CGPA)") +
   theme_minimal()
+
+# Convertir depresión a binaria
+datos$Depresion <- ifelse(datos$Do.you.have.Depression. == "Yes", 1, 0)
+
+# Matriz de correlación
+correlacion <- cor(datos[, c("CGPA_num", "Depresion", "Age")],
+                   use = "complete.obs")
+print(correlacion)
+
+# Visualización
+library(corrplot)
+corrplot(correlacion, method = "circle", type = "upper", tl.cex = 0.8)
