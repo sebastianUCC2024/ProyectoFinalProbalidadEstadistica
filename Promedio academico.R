@@ -1,5 +1,6 @@
 # Importamos nuestra base datos
 datos <- read.csv("EstudioDatosMentales.csv",header=TRUE, sep=",")
+install.packages("corrplot")
 # Media, mediana, mínimo, máximo, etc.
 summary(datos$What.is.your.CGPA.) 
 # Rango
@@ -21,4 +22,4 @@ barplot(
 qqnorm(EstudioDatosMentales$Age, main = "grafico edad", xlab = "x", ylab = "y")
 qqline(EstudioDatosMentales$Age, col = "red", lwd = 2)
 
-     
+
