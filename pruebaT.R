@@ -20,6 +20,7 @@ mujeres <- filter(datos, Choose.your.gender == "Female")
 hombres <- filter(datos, Choose.your.gender == "Male")
 
 # Prueba t para mujeres (con vs sin depresión)
+
 t_test_mujeres <- t.test(CGPA_num ~ Do.you.have.Depression., data = mujeres)
 print("Prueba t para mujeres (CGPA ~ Depresión):")
 print(t_test_mujeres)
@@ -33,9 +34,13 @@ print(t_test_hombres)
 library(dplyr)
 library(ggplot2)
 
-# Leer y limpiar los datos
-datos <- read.csv("EstudioDatosMentales.csv")
 names(datos) <- make.names(names(datos))
+
+# Convertir depresión a binaria
+datos$Depresion <- ifelse(datos$Do.you.have.Depression. == "Yes", 1, 0)
+
+#convertir ansiedad a binaria 
+datos$ansiedad <- ifelse(datos$Do.you.have.Anxiety. == "Yes", 1, 0)
 
 # Modelo de regresión lineal: CGPA según Edad
 modelo <- lm(CGPA_num ~ Depresion, data = datos)
@@ -45,16 +50,14 @@ print(modelo)
 summary(modelo)
 
 # Visualización del modelo
-ggplot(datos, aes(x = Depresion, y = CGPA_num)) +
+ggplot(datos, aes(x = Age, y = CGPA_num)) +
   geom_point(color = "darkred") +
   geom_smooth(method = "lm", color = "blue", se = TRUE) +
   labs(title = "Relación entre Edad y depresion",
-       x = "depresion",
+       x = "edad",
        y = "Promedio Académico (CGPA)") +
   theme_minimal()
 
-# Convertir depresión a binaria
-datos$Depresion <- ifelse(datos$Do.you.have.Depression. == "Yes", 1, 0)
 
 # Matriz de correlación
 correlacion <- cor(datos[, c("CGPA_num", "Depresion", "Age")],
@@ -64,3 +67,4 @@ print(correlacion)
 # Visualización
 library(corrplot)
 corrplot(correlacion, method = "circle", type = "upper", tl.cex = 0.8)
+
