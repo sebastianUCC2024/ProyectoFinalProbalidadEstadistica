@@ -53,7 +53,7 @@ summary(modelo)
 ggplot(datos, aes(x = Age, y = CGPA_num)) +
   geom_point(color = "darkred") +
   geom_smooth(method = "lm", color = "blue", se = TRUE) +
-  labs(title = "Relación entre Edad y depresion",
+  labs(title = "Relación entre Edad y promedio academico",
        x = "edad",
        y = "Promedio Académico (CGPA)") +
   theme_minimal()
